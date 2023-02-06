@@ -11,7 +11,7 @@ import os
 # Galileo position x, y, z (December 2000 Ganymede Flyby)
 galPos = (-15.2, 0.57, 0.84)
 # Allowed ranges
-allowedErr = (5, 1, 1)
+allowedErr = (5, 5, 5)
 
 # Define input and output files
 inputFile = open("input.txt", "r")

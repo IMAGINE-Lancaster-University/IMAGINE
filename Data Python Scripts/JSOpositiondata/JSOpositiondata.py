@@ -20,9 +20,10 @@ if os.path.exists("output.txt"):
 outputFile = open("output.txt", "x")
 
 # Read input data into a list
-lsData = inputFile.readlines()
+lsInput = inputFile.readlines()
 
-# for i in range(1, 207359):
+for i in range(1, 207359):
+    dataPoint = lsInput[i].split("     ")
 
 inputFile.close()
 outputFile.close()

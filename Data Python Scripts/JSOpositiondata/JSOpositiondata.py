@@ -19,6 +19,10 @@ if os.path.exists("output.txt"):
     os.remove("output.txt")
 outputFile = open("output.txt", "x")
 
+# Read input data into a list
+lsData = inputFile.readlines()
 
+# for i in range(1, 207359):
 
-
+inputFile.close()
+outputFile.close()

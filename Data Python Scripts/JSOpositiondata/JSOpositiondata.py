@@ -22,7 +22,7 @@ outputFile = open("output.txt", "x")
 # Read input data into a list
 lsInput = inputFile.readlines()
 
-for i in range(1, 207357):
+for i in range(1, 736121):
     dataPoint = lsInput[i].split("     ")
     if galPos[0] - allowedErr[0] < float(dataPoint[1]) < galPos[0] + allowedErr[0] \
             and galPos[1] - allowedErr[1] < float(dataPoint[2]) < galPos[1] + allowedErr[1] \

@@ -23,3 +23,9 @@ for i in mayAv:
         if i[0] == j[0]:
             diffAv.append([i[0], str(float(j[1]) - float(i[1]))])
 
+# Average the differences in diffAv
+totalDiffs = 0
+for diff in diffAv:
+    if float(diff[0]) < 11500 or float(diff[0]) > 12500:
+        totalDiffs += float(diff[1])
+adjustment = totalDiffs / len(diffAv)

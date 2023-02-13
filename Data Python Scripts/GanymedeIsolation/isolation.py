@@ -54,6 +54,13 @@ class Table:
             self.gal_jup.append(points[5])
             self.gal_gan.append(points[6])
 
+    def update_rows(self):
+        rows = []
+        for i in range(0, self.size):
+            lsRow = [self.time[i], self.JSOx[i], self.JSOy[i], self.JSOz[i], self.bmag[i], self.gal_jup[i], self.gal_gan[i]]
+            rows.append("".join(lsRow))
+        self.rows = rows
+
     def output(self, file):
         # Open file for writing
         if os.path.exists(file):
@@ -67,5 +74,21 @@ class Table:
     def timeformat(self):
         for i in range(0, self.size):
             self.time[i] = str(float(self.time[i]) - float(self.time[0]))
-        print(self.time[0])
-        print(self.time[12])
+        self.update_rows()
+
+    def collectav_bmag(self):
+        avRows = []
+        prev = float(self.time[0])
+        totalPointBmag = float(self.bmag[0])
+        totalPoints = 1
+        for i in range(1, self.size):
+            if float(self.time[i]) == prev:
+                totalPoints += 1
+                totalPointBmag += float(self.bmag[i])
+            else:
+                avBmag = totalPointBmag / totalPoints
+                avRows.append([str(prev), str(avBmag)])
+                totalPointBmag = float(self.bmag[i])
+                totalPoints = 1
+            prev = float(self.time[i])
+        return avRows

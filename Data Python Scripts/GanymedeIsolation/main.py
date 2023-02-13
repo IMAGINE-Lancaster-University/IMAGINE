@@ -39,3 +39,10 @@ may.update_rows()
 fakeDec = []
 for i in mayAv:
     fakeDec.append([i[0], str(float(i[1]) + adjustment)])
+
+# Subtraction of artificial December data from actual December data
+# This data will serve as Ganymede's isolated magnetic field strength
+noGan = []
+for i in range(0, len(fakeDec)):
+    noGan.append([decAv[i][0], str(float(decAv[i][1]) - float(fakeDec[i][1]))])
+print(noGan)

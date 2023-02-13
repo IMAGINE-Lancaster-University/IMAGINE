@@ -55,6 +55,7 @@ class Table:
             self.gal_gan.append(points[6])
 
     def update_rows(self):
+        """Updates self.rows to include any updated data points in the column data lists"""
         rows = []
         for i in range(0, self.size):
             lsRow = [self.time[i], self.JSOx[i], self.JSOy[i], self.JSOz[i], self.bmag[i], self.gal_jup[i], self.gal_gan[i]]
@@ -62,6 +63,7 @@ class Table:
         self.rows = rows
 
     def output(self, file):
+        """Outputs the data table to a text file"""
         # Open file for writing
         if os.path.exists(file):
             os.remove(file)
@@ -72,12 +74,15 @@ class Table:
         f.close()
 
     def timeformat(self):
+        """Reformats the time column to be in seconds since the beginning of the timeseries"""
         start = float(self.time[0])
         for i in range(0, self.size):
             self.time[i] = str(float(self.time[i]) - start)
         self.update_rows()
 
     def collectav_bmag(self):
+        """Returns a new list of times alongside magnetic field strengths. If there are multiple data points for the
+        same time, it replaces them with a single data point with the magnetic field averaged at that time. """
         avRows = []
         prev = float(self.time[0])
         totalPointBmag = float(self.bmag[0])

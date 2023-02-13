@@ -29,3 +29,8 @@ for diff in diffAv:
     if float(diff[0]) < 11500 or float(diff[0]) > 12500:
         totalDiffs += float(diff[1])
 adjustment = totalDiffs / len(diffAv)
+
+# Addition of average to May data
+for i in range(0, may.size):
+    may.bmag[i] = str(float(may.bmag[i]) + adjustment)
+may.update_rows()

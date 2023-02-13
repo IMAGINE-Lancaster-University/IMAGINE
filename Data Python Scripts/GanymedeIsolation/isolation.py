@@ -7,3 +7,6 @@
 # Calculate the average deviation between the two plots (excluding Ganymede encounter).
 # Adjust the May plot using these average values so that it is the same magnitude as the December plot.
 # Subtract the May data points from the December data points.
+
+# Imports
+import os

@@ -97,4 +97,6 @@ class Table:
                 totalPointBmag = float(self.bmag[i])
                 totalPoints = 1
             prev = float(self.time[i])
+        avBmag = totalPointBmag / totalPoints
+        avRows.append([str(prev), str(avBmag)])
         return avRows

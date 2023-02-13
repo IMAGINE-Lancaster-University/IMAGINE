@@ -3,6 +3,7 @@
 
 # Imports
 from isolation import *
+import os
 
 # Create data tables for May 2000 and December 2000 data from text files
 dec = Table(file="dec.txt")
@@ -45,4 +46,12 @@ for i in mayAv:
 noGan = []
 for i in range(0, len(fakeDec)):
     noGan.append([decAv[i][0], str(float(decAv[i][1]) - float(fakeDec[i][1]))])
-print(noGan)
+
+# Output isolated data
+# Open file for writing
+if os.path.exists("noGan.txt"):
+    os.remove("noGan.txt")
+f = open("noGan.txt", "x")
+for i in range(0, len(noGan)):
+    f.write(" ".join(noGan[i]) + "\n")
+f.close()

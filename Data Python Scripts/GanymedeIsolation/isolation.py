@@ -72,8 +72,9 @@ class Table:
         f.close()
 
     def timeformat(self):
+        start = float(self.time[0])
         for i in range(0, self.size):
-            self.time[i] = str(float(self.time[i]) - float(self.time[0]))
+            self.time[i] = str(float(self.time[i]) - start)
         self.update_rows()
 
     def collectav_bmag(self):

@@ -10,3 +10,46 @@
 
 # Imports
 import os
+
+
+# Define Table Class
+class Table:
+    """
+    A data table containing time, JSO coordinate, absolute magnetic field strength, and Galileo-Jupiter and
+    Galileo-Ganymede distance data.
+    """
+
+    def __init__(self, file="", rows=None):
+        """Class initialisation method which sets the received arguments as object attributes"""
+        if file != "":
+            # Open file, read lines and close file
+            f = open(file, "r")
+            self.rows = f.readlines()
+            f.close()
+        elif list:
+            self.rows = rows
+        else:
+            print("No input data submitted")
+        # Define table size (number of rows)
+        self.size = len(self.rows)
+
+        # Define column data lists
+        self.time = []
+        self.JSOx = []
+        self.JSOy = []
+        self.JSOz = []
+        self.bmag = []
+        self.gal_jup = []
+        self.gal_gan = []
+
+        # Assign data to lists
+        for i in range(0, self.size):
+            row = self.rows[i]
+            points = row.split(" ")
+            self.time.append(points[0])
+            self.JSOx.append(points[1])
+            self.JSOy.append(points[2])
+            self.JSOz.append(points[3])
+            self.bmag.append(points[4])
+            self.gal_jup.append(points[5])
+            self.gal_gan.append(points[6])

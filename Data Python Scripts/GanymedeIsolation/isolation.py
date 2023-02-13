@@ -60,4 +60,6 @@ class Table:
             os.remove(file)
         f = open(file, "r")
         self.rows = f.readlines()
+        for i in range(0, self.size):
+            f.write(self.rows[i])
         f.close()

@@ -67,8 +67,7 @@ class Table:
         # Open file for writing
         if os.path.exists(file):
             os.remove(file)
-        f = open(file, "r")
-        self.rows = f.readlines()
+        f = open(file, "x")
         for i in range(0, self.size):
             f.write(self.rows[i])
         f.close()
@@ -97,4 +96,6 @@ class Table:
                 totalPointBmag = float(self.bmag[i])
                 totalPoints = 1
             prev = float(self.time[i])
+        avBmag = totalPointBmag / totalPoints
+        avRows.append([str(prev), str(avBmag)])
         return avRows

@@ -63,3 +63,9 @@ class Table:
         for i in range(0, self.size):
             f.write(self.rows[i])
         f.close()
+
+    def timeformat(self):
+        for i in range(0, self.size):
+            self.time[i] = str(float(self.time[i]) - float(self.time[0]))
+        print(self.time[0])
+        print(self.time[12])

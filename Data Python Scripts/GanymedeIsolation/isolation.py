@@ -53,3 +53,11 @@ class Table:
             self.bmag.append(points[4])
             self.gal_jup.append(points[5])
             self.gal_gan.append(points[6])
+
+    def output(self, file):
+        # Open file for writing
+        if os.path.exists(file):
+            os.remove(file)
+        f = open(file, "r")
+        self.rows = f.readlines()
+        f.close()

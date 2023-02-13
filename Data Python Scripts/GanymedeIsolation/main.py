@@ -34,3 +34,8 @@ adjustment = totalDiffs / len(diffAv)
 for i in range(0, may.size):
     may.bmag[i] = str(float(may.bmag[i]) + adjustment)
 may.update_rows()
+
+# Creation of artificial December 2000 field without Ganymede
+fakeDec = []
+for i in mayAv:
+    fakeDec.append([i[0], str(float(i[1]) + adjustment)])

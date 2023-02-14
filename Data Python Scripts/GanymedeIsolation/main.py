@@ -57,5 +57,5 @@ if os.path.exists("noGan.txt"):
     os.remove("noGan.txt")
 f = open("noGan.txt", "x")
 for i in range(0, len(noGan)):
-    f.write(" ".join(noGan[i]) + "\n")
+    f.write(" ".join(noGan[i]))
 f.close()

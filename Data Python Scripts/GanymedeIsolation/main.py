@@ -27,7 +27,7 @@ for i in mayAv:
 # Average the differences in diffAv
 totalDiffs = 0
 for diff in diffAv:
-    if float(diff[0]) < 11500 or float(diff[0]) > 12500:
+    if float(diff[0]) < 11250 or float(diff[0]) > 12600:
         totalDiffs += float(diff[1])
 adjustment = totalDiffs / len(diffAv)
 

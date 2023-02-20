@@ -49,7 +49,7 @@ for i in range(0, len(fakeMay)):
 
 # Append Galileo-Ganymede distance to data
 for i in range(0, len(noGan)):
-    noGan[i].append(dec.gal_gan[i])
+    noGan[i].append(may.gal_gan[i])
 
 # Output isolated data
 # Open file for writing

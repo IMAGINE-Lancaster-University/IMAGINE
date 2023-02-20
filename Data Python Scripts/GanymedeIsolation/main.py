@@ -5,8 +5,8 @@
 from isolation import *
 import os
 
-# Create data tables for May 2000 and December 2000 data from text files
-dec = Table(file="dec.txt")
+# Create data tables for May 2000 and Feb 2000 data from text files
+feb = Table(file="feb.txt")
 may = Table(file="may.txt")
 
 # Format the time to seconds since beginning of timeseries
@@ -15,12 +15,12 @@ may.timeformat()
 
 # Average magnetic field strength for each time point
 mayAv = may.collectav_bmag()
-decAv = dec.collectav_bmag()
+febAv = feb.collectav_bmag()
 
 # Generate list of differences in average for each time point
 diffAv = []
 for i in mayAv:
-    for j in decAv:
+    for j in febAv:
         if i[0] == j[0]:
             diffAv.append([i[0], str(float(j[1]) - float(i[1]))])
 
@@ -31,21 +31,21 @@ for diff in diffAv:
         totalDiffs += float(diff[1])
 adjustment = totalDiffs / len(diffAv)
 
-# Addition of average to May data
-for i in range(0, may.size):
-    may.bmag[i] = str(float(may.bmag[i]) + adjustment)
-may.update_rows()
+# Addition of average to Feb data
+for i in range(0, feb.size):
+    feb.bmag[i] = str(float(feb.bmag[i]) + adjustment)
+feb.update_rows()
 
 # Creation of artificial December 2000 field without Ganymede
-fakeDec = []
-for i in mayAv:
-    fakeDec.append([i[0], str(float(i[1]) + adjustment)])
+fakeMay = []
+for i in febAv:
+    fakeMay.append([i[0], str(float(i[1]) + adjustment)])
 
 # Subtraction of artificial December data from actual December data
 # This data will serve as Ganymede's isolated magnetic field strength
 noGan = []
-for i in range(0, len(fakeDec)):
-    noGan.append([decAv[i][0], str(float(decAv[i][1]) - float(fakeDec[i][1]))])
+for i in range(0, len(fakeMay)):
+    noGan.append([mayAv[i][0], str(float(mayAv[i][1]) - float(fakeMay[i][1]))])
 
 # Output isolated data
 # Open file for writing

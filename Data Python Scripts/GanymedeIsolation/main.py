@@ -44,7 +44,7 @@ for i in febAv:
 # Subtraction of artificial December data from actual December data
 # This data will serve as Ganymede's isolated magnetic field strength
 noGan = []
-for i in range(0, len(fakeMay)):
+for i in range(0, len(mayAv)):
     noGan.append([mayAv[i][0], str(float(mayAv[i][1]) - float(fakeMay[i][1]))])
 
 # Append Galileo-Ganymede distance to data

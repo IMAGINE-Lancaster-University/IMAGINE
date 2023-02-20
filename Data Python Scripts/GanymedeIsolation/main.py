@@ -10,7 +10,7 @@ dec = Table(file="dec.txt")
 may = Table(file="may.txt")
 
 # Format the time to seconds since beginning of timeseries
-dec.timeformat()
+feb.timeformat()
 may.timeformat()
 
 # Average magnetic field strength for each time point

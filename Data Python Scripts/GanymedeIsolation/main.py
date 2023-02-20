@@ -47,11 +47,15 @@ noGan = []
 for i in range(0, len(fakeMay)):
     noGan.append([mayAv[i][0], str(float(mayAv[i][1]) - float(fakeMay[i][1]))])
 
+# Append Galileo-Ganymede distance to data
+for i in range(0, len(noGan)):
+    noGan[i].append(dec.gal_gan[i])
+
 # Output isolated data
 # Open file for writing
 if os.path.exists("noGan.txt"):
     os.remove("noGan.txt")
 f = open("noGan.txt", "x")
 for i in range(0, len(noGan)):
-    f.write(" ".join(noGan[i]) + "\n")
+    f.write(" ".join(noGan[i]))
 f.close()

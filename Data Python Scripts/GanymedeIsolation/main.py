@@ -16,7 +16,7 @@ may.timeformat()
 # Average magnetic field strength for each time point
 mayAv = may.collectav_bmag()
 febAv = feb.collectav_bmag()
-
+print(mayAv)
 # Generate list of differences in average for each time point
 diffAv = []
 for i in mayAv:
@@ -27,7 +27,7 @@ for i in mayAv:
 # Average the differences in diffAv
 totalDiffs = 0
 for diff in diffAv:
-    if float(diff[0]) < 11250 or float(diff[0]) > 12600:
+    if float(diff[0]) < 6800 or float(diff[0]) > 7600:
         totalDiffs += float(diff[1])
 adjustment = totalDiffs / len(diffAv)
 
